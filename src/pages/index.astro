@@ -1,16 +1,21 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DivisionCard from '../components/DivisionCard.astro';
+const divisions=[
+ {number:'01',title:'RAU Language Academy',description:'German learning with structured modules, clear pathways and focused exam preparation.',href:'/language-academy'},
+ {number:'02',title:'RAU Career Guidance',description:'Thoughtful guidance for study, vocational training and career decisions across Europe.',href:'/career-guidance'},
+ {number:'03',title:'RAU Job Support',description:'Practical support to bring focus and structure to each stage of your European job search.',href:'/job-support'},
+ {number:'04',title:'European Client Projects',description:'Project services for European businesses, delivered by RAU Global’s India team.',href:'/european-client-projects'}];
+const stories=[
+ {route:'Language Academy',quote:'Paste a verified alumni feedback quote here. Keep it short, personal and in the person’s own words.',person:'Add name, programme and year'},
+ {route:'Career Guidance',quote:'Paste a verified success story here. Describe the person’s journey only after their approval.',person:'Add name, pathway and year'},
+ {route:'Job Support',quote:'Paste a verified feedback quote here. Add a photo only when you have explicit permission to use it.',person:'Add name, role and year'}];
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="RAU Global | Your Europe pathway" description="RAU Global supports Europe-focused education, careers, job search and European client projects.">
+ <section class="hero hero-new"><div class="shell hero-grid"><div class="hero-copy"><p class="eyebrow">Your Europe pathway starts here</p><h1>Move forward.<br /><span>Feel at home in Europe.</span></h1><p class="lead">RAU Global helps you turn European study and career ambitions into clear, confident next steps—from German language learning to career planning and job support.</p><div class="button-row"><a class="button button-gold" href="/contact">Talk to our team <span aria-hidden="true">→</span></a><a class="hero-text-link" href="#divisions">Explore services <span aria-hidden="true">↓</span></a></div></div><div class="hero-visual" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="europe-card"><span class="europe-card-mark">RG</span><p>RAU Global</p><strong>Your next chapter<br />in Europe.</strong></div><div class="floating-note note-one"><span>01</span> Learn German</div><div class="floating-note note-two"><span>02</span> Plan your career</div><div class="floating-note note-three"><span>03</span> Find your opportunity</div></div></div></section>
+ <section class="quick-paths"><div class="shell quick-paths-inner"><p>What brings you here?</p><a href="/language-academy">I want to learn German <span>→</span></a><a href="/career-guidance">I am planning my Europe path <span>→</span></a><a href="/job-support">I need job-search support <span>→</span></a></div></section>
+ <section class="section" id="divisions"><div class="shell"><div class="section-heading"><div><p class="eyebrow">How we can help</p><h2>Choose the support<br />that moves you forward.</h2></div><p>Whether you are preparing for Europe as an individual or exploring a client project as a business, begin with the division that fits your need.</p></div><div class="division-grid">{divisions.map(division=><DivisionCard {...division} />)}</div></div></section>
+ <section class="section stories-section" id="stories"><div class="shell"><div class="stories-intro"><div><p class="eyebrow">Alumni &amp; success stories</p><h2>Real journeys deserve a place to be seen.</h2></div><p>Use this space to share feedback from learners and alumni. The cards below are ready for real stories once you have permission to publish them.</p></div><div class="stories-grid">{stories.map((story,index)=><article class:list={['story-card', index === 1 && 'story-card-highlight']}><span class="story-quote" aria-hidden="true">“</span><p class="story-copy">{story.quote}</p><div class="story-footer"><span class="story-route">{story.route}</span><span class="story-person">{story.person}</span></div></article>)}</div><div class="stories-action"><p>Have a RAU Global experience you would like to share?</p><a class="text-link" href="/contact">Share your story <span aria-hidden="true">→</span></a></div></div></section>
+ <section class="section section-soft"><div class="shell split"><div class="copy"><p class="eyebrow">Built for the journey</p><h2>Big plans become easier with the right next step.</h2><p>We bring practical support and clear guidance to the decisions that shape your European future—from the first questions to the work that follows.</p><a class="text-link" href="/about">Meet RAU Global <span aria-hidden="true">→</span></a></div><div class="metric-panel"><p class="eyebrow">For European businesses</p><h2>An India team for defined European project work.</h2><p>Our European Client Projects division supports European clients with project delivery from India.</p><a class="button" href="/european-client-projects">Explore client projects <span aria-hidden="true">→</span></a></div></div></section>
+ <section class="cta-band"><div class="shell"><p class="eyebrow">Start a conversation</p><h2>Your Europe story can start with one conversation.</h2><p>Tell us where you are now and where you want to go. We will help you find the right place to begin.</p><a class="button" href="/contact">Contact RAU Global <span aria-hidden="true">→</span></a></div></section>
+</BaseLayout>
